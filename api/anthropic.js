@@ -39,7 +39,6 @@ export default async function handler(req, res) {
     const text = await r.text();
     let data;
     try { data = JSON.parse(text); } catch { data = { error: text }; }
-
     if (!r.ok) return res.status(r.status).json(data);
     return res.status(200).json(data);
   } catch (e) {
