@@ -22,9 +22,15 @@ export default async function handler(req, res) {
       }),
     });
 
-    if (!r.ok) return res.status(r.status).json({ error: await r.text() });
+    if (!r.ok) {
+      const err = await r.text();
+      console.error("ElevenLabs error:", r.status, err);
+      return res.status(r.status).json({ error: err });
+    }
+
     const buf = await r.arrayBuffer();
     res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Cache-Control", "no-store");
     return res.status(200).send(Buffer.from(buf));
   } catch (e) {
     return res.status(500).json({ error: e.message });
