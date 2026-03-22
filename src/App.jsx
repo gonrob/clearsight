@@ -21,7 +21,7 @@ const C = {
 const LANGS = {
   es: {
     flag:"🇪🇸", name:"Español",
-    tagline:"See through any contract.",
+    tagline:"Entiende lo que firmas.",
     sub:"Sube cualquier documento legal y te lo explicamos en lenguaje claro.",
     uploadTitle:"Sube tu documento",
     uploadSub:"PDF, imagen o foto de contrato",
