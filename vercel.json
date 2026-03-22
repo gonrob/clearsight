@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/anthropic.js": { "maxDuration": 60 },
+    "api/elevenlabs.js": { "maxDuration": 30 }
+  }
+}
