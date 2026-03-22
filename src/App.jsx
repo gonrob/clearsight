@@ -456,7 +456,7 @@ function PricingModal({t,onClose,userPlan}) {
                 {plan.cta}
               </div>
             ) : plan.id==="empresa" ? (
-              <a href="mailto:hello@clearsight.app"
+              <a href="mailto:hello@docplain.com"
                 style={{display:"block",padding:"10px",background:C.ink,color:"#fff",
                   borderRadius:10,fontSize:13,fontWeight:700,textAlign:"center",textDecoration:"none"}}>
                 {plan.cta}
@@ -567,7 +567,7 @@ function exportPDF(result, lang) {
     ${result.watch?.length?`<h2>${t.watchTitle}</h2><ul>${result.watch.map(r=>`<li>${r}</li>`).join("")}</ul>`:""}
     ${result.negotiate?.length?`<h2>${t.negotiateTitle}</h2><ul>${result.negotiate.map(r=>`<li>${r}</li>`).join("")}</ul>`:""}
     ${result.questions?.length?`<h2>${t.questionsTitle}</h2><ul>${result.questions.map(r=>`<li>${r}</li>`).join("")}</ul>`:""}
-    <div class="footer">ClearSight · clearsight.app · ${new Date().toLocaleDateString()} · ${t.disclaimer}</div>
+    <div class="footer">DocPlain · docplain.com · ${new Date().toLocaleDateString()} · ${t.disclaimer}</div>
     </body></html>
   `;
   const win = window.open("","_blank");
@@ -691,7 +691,7 @@ export default function App() {
         <div style={{display:"flex",alignItems:"center",gap:9}}>
           <Logo size={30}/>
           <div>
-            <div style={{fontSize:15,fontWeight:700,fontFamily:"'Lora',serif",color:C.ink,lineHeight:1}}>ClearSight</div>
+            <div style={{fontSize:15,fontWeight:700,fontFamily:"'Lora',serif",color:C.ink,lineHeight:1}}>DocPlain</div>
             <div style={{fontSize:10,color:C.inkLight}}>{t.tagline}</div>
           </div>
         </div>
