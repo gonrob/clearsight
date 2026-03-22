@@ -67,7 +67,7 @@ const T = {
         cta:"Suscribirse",latam:"3€/mes en Latinoamérica"},
       {id:"empresa",name:"Empresa",price:"29€",period:"/mes",highlight:false,
         features:["Todo lo de Personal","Hasta 10 usuarios","Historial de documentos","API access","Soporte prioritario"],
-        cta:"Contactar",latam:"15€/mes en Latinoamérica"},
+        cta:"Suscribirse →",latam:"15€/mes en Latinoamérica"},
     ],
   },
   en:{ flag:"🇬🇧", lp:"English",
@@ -108,7 +108,7 @@ const T = {
         cta:"Subscribe",latam:"€3/mo in Latin America"},
       {id:"empresa",name:"Business",price:"€29",period:"/mo",highlight:false,
         features:["Everything in Personal","Up to 10 users","Document history","API access","Priority support"],
-        cta:"Contact us",latam:"€15/mo in Latin America"},
+        cta:"Subscribe →",latam:"€15/mo in Latin America"},
     ],
   },
   fr:{ flag:"🇫🇷", lp:"français",
@@ -149,7 +149,7 @@ const T = {
         cta:"S'abonner",latam:"3€/mois en Amérique latine"},
       {id:"empresa",name:"Entreprise",price:"29€",period:"/mois",highlight:false,
         features:["Tout Personnel","Jusqu'à 10 utilisateurs","Historique","Accès API","Support prioritaire"],
-        cta:"Contacter",latam:"15€/mois en Amérique latine"},
+        cta:"S abonner →",latam:"15€/mois en Amérique latine"},
     ],
   },
   pt:{ flag:"🇧🇷", lp:"português",
@@ -190,7 +190,7 @@ const T = {
         cta:"Assinar",latam:"3€/mês na América Latina"},
       {id:"empresa",name:"Empresa",price:"29€",period:"/mês",highlight:false,
         features:["Tudo do Pessoal","Até 10 usuários","Histórico","Acesso API","Suporte prioritário"],
-        cta:"Contatar",latam:"15€/mês na América Latina"},
+        cta:"Assinar →",latam:"15€/mês na América Latina"},
     ],
   },
   de:{ flag:"🇩🇪", lp:"Deutsch",
@@ -231,7 +231,7 @@ const T = {
         cta:"Abonnieren",latam:"3€/Monat in Lateinamerika"},
       {id:"empresa",name:"Unternehmen",price:"29€",period:"/Monat",highlight:false,
         features:["Alles Persönlich","Bis zu 10 Nutzer","Verlauf","API-Zugang","Priority-Support"],
-        cta:"Kontaktieren",latam:"15€/Monat in Lateinamerika"},
+        cta:"Abonnieren →",latam:"15€/Monat in Lateinamerika"},
     ],
   },
   it:{ flag:"🇮🇹", lp:"italiano",
@@ -272,7 +272,7 @@ const T = {
         cta:"Abbonati",latam:"3€/mese in America Latina"},
       {id:"empresa",name:"Azienda",price:"29€",period:"/mese",highlight:false,
         features:["Tutto Personale","Fino a 10 utenti","Storico","Accesso API","Supporto prioritario"],
-        cta:"Contattaci",latam:"15€/mese in America Latina"},
+        cta:"Abbonati →",latam:"15€/mese in America Latina"},
     ],
   },
   ru:{ flag:"🇷🇺", lp:"русском языке",
@@ -313,7 +313,7 @@ const T = {
         cta:"Подписаться",latam:"3€/мес в Латинской Америке"},
       {id:"empresa",name:"Бизнес",price:"29€",period:"/мес",highlight:false,
         features:["Всё из Личного","До 10 пользователей","История","API доступ","Приоритетная поддержка"],
-        cta:"Связаться",latam:"15€/мес в Латинской Америке"},
+        cta:"Подписаться →",latam:"15€/мес в Латинской Америке"},
     ],
   },
   zh:{ flag:"🇨🇳", lp:"中文",
@@ -354,7 +354,7 @@ const T = {
         cta:"订阅",latam:"拉丁美洲地区3€/月"},
       {id:"empresa",name:"企业",price:"29€",period:"/月",highlight:false,
         features:["个人版全部","最多10用户","文件历史","API访问","优先支持"],
-        cta:"联系我们",latam:"拉丁美洲地区15€/月"},
+        cta:"订阅 →",latam:"拉丁美洲地区15€/月"},
     ],
   },
 };
@@ -456,13 +456,13 @@ function PricingModal({t,onClose,userPlan}) {
                 {plan.cta}
               </div>
             ) : plan.id==="empresa" ? (
-              <a href="mailto:hello@docplain.com"
-                style={{display:"block",padding:"10px",background:C.ink,color:"#fff",
-                  borderRadius:10,fontSize:13,fontWeight:700,textAlign:"center",textDecoration:"none"}}>
+              <a href="https://buy.stripe.com/8x29AVcty7j2gY80JBdwc02" target="_blank" rel="noopener noreferrer"
+                style={{display:"block",padding:"10px",background:GG,color:"#fff",
+                  borderRadius:10,fontSize:13,fontWeight:700,textAlign:"center",textDecoration:"none",display:"block"}}>
                 {plan.cta}
               </a>
             ) : (
-              <a href="https://buy.stripe.com/clearsight_personal" target="_blank" rel="noopener noreferrer"
+              <a href="https://buy.stripe.com/eVq3cx0KQgTCcHS77Zdwc01" target="_blank" rel="noopener noreferrer"
                 style={{display:"block",padding:"10px",background:GG,color:"#fff",
                   borderRadius:10,fontSize:13,fontWeight:700,textAlign:"center",textDecoration:"none"}}>
                 {plan.cta} →
