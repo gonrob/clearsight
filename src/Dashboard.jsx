@@ -27,7 +27,8 @@ export default function Dashboard() {
 
   async function fetchStats() {
     try {
-      const r = await fetch("/api/dashboard");
+      const key = new URLSearchParams(window.location.search).get("key") || "";
+      const r = await fetch("/api/dashboard?key=" + key);
       if (!r.ok) throw new Error("HTTP " + r.status);
       const d = await r.json();
       setStats(d);
