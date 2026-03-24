@@ -634,7 +634,7 @@ export default function App() {
 
   async function analyze() {
     if(!isSignedIn||!user) return;
-    if(usage>=FREE_LIMIT && user?.primaryEmailAddress?.emailAddress !== "gonrobtor@gmail.com" && userPlan === "free"){ setLimitHit(true); return; }
+    const isAdmin = user?.primaryEmailAddress?.emailAddress === "gonrobtor@gmail.com"; if(usage>=FREE_LIMIT && !isAdmin && userPlan === "free"){ setLimitHit(true); return; }
     if(!text.trim()&&pages.length===0) return;
 
     setError(null); setResult(null); setAnalyzing(true);
