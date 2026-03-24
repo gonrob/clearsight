@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DocPlain Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0D1117;color:#E6EDF3;font-family:-apple-system,sans-serif;padding:32px 24px;min-height:100vh}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.card{background:#161B22;border:1px solid #30363D;border-radius:12px;padding:20px}
+.card h3{font-size:11px;color:#8B949E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.card .val{font-size:36px;font-weight:800}
+.card .icon{font-size:24px;margin-bottom:6px}
+h1{font-size:22px;margin-bottom:4px}
+.sub{color:#8B949E;font-size:13px;margin-bottom:28px}
+table{width:100%;border-collapse:collapse}
+td,th{padding:10px 12px;text-align:left;border-bottom:1px solid #30363D;font-size:13px}
+th{color:#8B949E;font-weight:600;font-size:11px;text-transform:uppercase}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.link{padding:8px 14px;background:#161B22;border:1px solid #30363D;border-radius:8px;color:#8B949E;text-decoration:none;font-size:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{width:24px;height:24px;border:3px solid #C4922A;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;margin:40px auto}
+</style>
+</head>
+<body>
+<h1>📋 DocPlain Dashboard</h1>
+<div class="sub" id="upd">Cargando...</div>
+<div class="grid" id="kpis"><div class="spin"></div></div>
+<div class="two" id="tables" style="display:none">
+  <div class="card"><h3>👥 Últimos registros</h3>
+    <table><thead><tr><th>Email</th><th>Fecha</th></tr></thead><tbody id="ub"></tbody></table></div>
+  <div class="card"><h3>💳 Últimos pagos</h3>
+    <table><thead><tr><th>Email</th><th>Plan</th><th>€</th></tr></thead><tbody id="pb"></tbody></table></div>
+</div>
+<div class="links">
+  <a class="link" href="https://dashboard.clerk.com" target="_blank">🔐 Clerk</a>
+  <a class="link" href="https://dashboard.stripe.com" target="_blank">💳 Stripe</a>
+  <a class="link" href="https://eu.posthog.com" target="_blank">📊 PostHog</a>
+  <a class="link" href="https://vercel.com" target="_blank">▲ Vercel</a>
+</div>
+<script>
+const key = new URLSearchParams(location.search).get('key')||'';
+async function load(){
+  const r = await fetch('/api/dashboard?key='+key);
+  if(!r.ok){document.body.innerHTML='<p style="color:#F85149;padding:40px">Clave incorrecta</p>';return;}
+  const d = await r.json();
+  document.getElementById('upd').textContent='Actualizado: '+new Date().toLocaleTimeString('es-ES');
+  document.getElementById('kpis').innerHTML=[
+    ['👥','Usuarios totales',d.totalUsers||0,'#58A6FF'],
+    ['✨','Nuevos esta semana',d.newUsersWeek||0,'#3FB950'],
+    ['💳','Suscriptores',d.activeSubscriptions||0,'#C4922A'],
+    ['💰','MRR',(d.mrr||0)+'€','#C4922A'],
+  ].map(([i,t,v,c])=>`<div class="card"><div class="icon">${i}</div><h3>${t}</h3><div class="val" style="color:${c}">${v}</div></div>`).join('');
+  document.getElementById('ub').innerHTML=(d.recentUsers||[]).map(u=>`<tr><td>${u.email}</td><td style="color:#8B949E">${u.created}</td></tr>`).join('')||'<tr><td colspan="2" style="color:#8B949E">Sin usuarios</td></tr>';
+  document.getElementById('pb').innerHTML=(d.recentPayments||[]).map(p=>`<tr><td>${p.email}</td><td style="color:#C4922A">${p.plan}</td><td style="color:#3FB950">+${p.amount}€</td></tr>`).join('')||'<tr><td colspan="3" style="color:#8B949E">Sin pagos aún</td></tr>';
+  document.getElementById('tables').style.display='grid';
+}
+load();setInterval(load,60000);
+</script>
+</body>
+</html>
