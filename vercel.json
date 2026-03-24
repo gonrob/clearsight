@@ -1,6 +1,19 @@
 {
+  "rewrites": [
+    {
+      "source": "/dashboard",
+      "destination": "/index.html"
+    }
+  ],
   "functions": {
-    "api/anthropic.js": { "maxDuration": 60 },
-    "api/elevenlabs.js": { "maxDuration": 30 }
+    "api/anthropic.js": {
+      "maxDuration": 60
+    },
+    "api/elevenlabs.js": {
+      "maxDuration": 30
+    },
+    "api/dashboard.js": {
+      "maxDuration": 10
+    }
   }
 }
