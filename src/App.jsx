@@ -30,8 +30,8 @@ const CSS = `
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const T = {
   es:{ flag:"🇪🇸", lp:"español",
-    tagline:"Entiende lo que firmas.",
-    sub:"Sube cualquier documento legal y te lo explicamos en lenguaje claro.",
+    tagline:"Sube tu contrato y DocPlain te explica lo que firmas.",
+    sub:"Contratos de alquiler, trabajo, préstamos — te decimos los riesgos, lo que puedes negociar y qué preguntar.",
     docTypes:["Alquiler","Trabajo","Préstamo","Multa","Cláusula","Otro"],
     docTypeLabel:"¿Qué tipo de documento?",
     uploadTitle:"Sube tu documento", uploadSub:"PDF o imágenes (varias páginas)",
@@ -71,8 +71,8 @@ const T = {
     ],
   },
   en:{ flag:"🇬🇧", lp:"English",
-    tagline:"Understand what you sign.",
-    sub:"Upload any legal document and we'll explain it in plain language.",
+    tagline:"Upload your contract and DocPlain explains what you sign.",
+    sub:"Rental, employment, loan contracts — we tell you the risks, what to negotiate and what to ask.",
     docTypes:["Rental","Employment","Loan","Fine","Clause","Other"],
     docTypeLabel:"What type of document?",
     uploadTitle:"Upload your document", uploadSub:"PDF or images (multiple pages)",
@@ -112,8 +112,8 @@ const T = {
     ],
   },
   fr:{ flag:"🇫🇷", lp:"français",
-    tagline:"Comprenez ce que vous signez.",
-    sub:"Téléchargez n'importe quel document juridique – expliqué en langage simple.",
+    tagline:"Téléchargez votre contrat et DocPlain vous explique ce que vous signez.",
+    sub:"Baux, contrats de travail, prêts — on vous dit les risques, ce que vous pouvez négocier et quoi demander.",
     docTypes:["Bail","Travail","Prêt","Amende","Clause","Autre"],
     docTypeLabel:"Quel type de document?",
     uploadTitle:"Téléchargez votre document", uploadSub:"PDF ou images (plusieurs pages)",
@@ -153,8 +153,8 @@ const T = {
     ],
   },
   pt:{ flag:"🇧🇷", lp:"português",
-    tagline:"Entenda o que você assina.",
-    sub:"Envie qualquer documento jurídico e explicamos em linguagem simples.",
+    tagline:"Envie seu contrato e o DocPlain explica o que você assina.",
+    sub:"Contratos de aluguel, trabalho, empréstimos — dizemos os riscos, o que negociar e o que perguntar.",
     docTypes:["Aluguel","Trabalho","Empréstimo","Multa","Cláusula","Outro"],
     docTypeLabel:"Que tipo de documento?",
     uploadTitle:"Envie seu documento", uploadSub:"PDF ou imagens (várias páginas)",
@@ -194,8 +194,8 @@ const T = {
     ],
   },
   de:{ flag:"🇩🇪", lp:"Deutsch",
-    tagline:"Verstehen Sie, was Sie unterschreiben.",
-    sub:"Laden Sie ein Rechtsdokument hoch – wir erklären es in einfacher Sprache.",
+    tagline:"Laden Sie Ihren Vertrag hoch und DocPlain erklärt, was Sie unterschreiben.",
+    sub:"Miet-, Arbeits-, Kreditverträge — wir sagen Ihnen die Risiken, was Sie verhandeln und was Sie fragen können.",
     docTypes:["Mietvertrag","Arbeitsvertrag","Darlehen","Bußgeld","Klausel","Sonstiges"],
     docTypeLabel:"Was für ein Dokument?",
     uploadTitle:"Dokument hochladen", uploadSub:"PDF oder Bilder (mehrere Seiten)",
@@ -235,8 +235,8 @@ const T = {
     ],
   },
   it:{ flag:"🇮🇹", lp:"italiano",
-    tagline:"Capisci cosa firmi.",
-    sub:"Carica qualsiasi documento legale e te lo spieghiamo in linguaggio chiaro.",
+    tagline:"Carica il tuo contratto e DocPlain ti spiega cosa firmi.",
+    sub:"Affitti, lavoro, prestiti — ti diciamo i rischi, cosa puoi negoziare e cosa chiedere.",
     docTypes:["Affitto","Lavoro","Prestito","Multa","Clausola","Altro"],
     docTypeLabel:"Che tipo di documento?",
     uploadTitle:"Carica il tuo documento", uploadSub:"PDF o immagini (più pagine)",
@@ -276,8 +276,8 @@ const T = {
     ],
   },
   ru:{ flag:"🇷🇺", lp:"русском языке",
-    tagline:"Понимайте, что подписываете.",
-    sub:"Загрузите любой юридический документ — объясним простым языком.",
+    tagline:"Загрузите договор и DocPlain объяснит, что вы подписываете.",
+    sub:"Аренда, работа, кредиты — скажем риски, что можно обсудить и что спросить.",
     docTypes:["Аренда","Работа","Кредит","Штраф","Пункт","Другое"],
     docTypeLabel:"Какой тип документа?",
     uploadTitle:"Загрузите документ", uploadSub:"PDF или изображения (несколько страниц)",
@@ -317,8 +317,8 @@ const T = {
     ],
   },
   zh:{ flag:"🇨🇳", lp:"中文",
-    tagline:"读懂您签署的文件。",
-    sub:"上传任何法律文件，我们用简单易懂的语言为您解释。",
+    tagline:"上传合同，DocPlain为您解释签署内容。",
+    sub:"租赁、劳动、贷款合同——告诉您风险、可协商内容和应提问题。",
     docTypes:["租赁","劳动","贷款","罚款","条款","其他"],
     docTypeLabel:"文件类型是什么？",
     uploadTitle:"上传您的文件", uploadSub:"PDF或图片（多页）",
@@ -376,16 +376,25 @@ function fileToB64(file) {
 }
 
 // ─── COMPONENTS ───────────────────────────────────────────────────────────────
-function Logo({size=32}) {
+function Logo({size=36}) {
+  const s = size / 36;
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
-      <rect x="6" y="4" width="28" height="36" rx="3" fill="#2D5016" opacity=".15"/>
-      <rect x="6" y="4" width="28" height="36" rx="3" stroke="#2D5016" strokeWidth="2"/>
-      <line x1="13" y1="14" x2="27" y2="14" stroke="#2D5016" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="13" y1="20" x2="27" y2="20" stroke="#2D5016" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="13" y1="26" x2="21" y2="26" stroke="#2D5016" strokeWidth="2" strokeLinecap="round"/>
-      <circle cx="36" cy="36" r="10" fill="#C4922A"/>
-      <path d="M31 36l3.5 3.5L41 30" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg width={size*5} height={size*5} viewBox="0 0 200 200" fill="none">
+      <g transform="scale(1.1) translate(10,8)">
+        <path d="M10 0 L80 0 L100 20 L100 120 L10 120 Z" fill="none" stroke="#C4922A" strokeWidth="2" strokeLinejoin="round"/>
+        <path d="M80 0 L80 20 L100 20" fill="none" stroke="#C4922A" strokeWidth="2" strokeLinejoin="round"/>
+        <line x1="22" y1="35" x2="68" y2="35" stroke="#C4922A" strokeWidth="1.8" strokeLinecap="round"/>
+        <line x1="22" y1="48" x2="68" y2="48" stroke="#C4922A" strokeWidth="1.8" strokeLinecap="round"/>
+        <line x1="22" y1="61" x2="54" y2="61" stroke="#C4922A" strokeWidth="1.8" strokeLinecap="round"/>
+        <circle cx="82" cy="92" r="30" fill="none" stroke="#C4922A" strokeWidth="2.2"/>
+        <circle cx="82" cy="92" r="23" fill="none" stroke="#C4922A" strokeWidth="0.7" opacity="0.35"/>
+        <rect x="58" y="81" width="20" height="16" rx="3" fill="none" stroke="#C4922A" strokeWidth="1.6"/>
+        <path d="M63 89 l3 3.5 5.5-5.5" stroke="#C4922A" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect x="82" y="81" width="20" height="16" rx="3" fill="none" stroke="#C4922A" strokeWidth="1.6"/>
+        <path d="M86 84 l10 9 M96 84 l-10 9" stroke="#C4922A" strokeWidth="1.6" fill="none" strokeLinecap="round"/>
+        <line x1="104" y1="114" x2="116" y2="126" stroke="#C4922A" strokeWidth="4.5" strokeLinecap="round"/>
+        <line x1="114" y1="124" x2="126" y2="136" stroke="#C4922A" strokeWidth="7" strokeLinecap="round"/>
+      </g>
     </svg>
   );
 }
@@ -472,6 +481,9 @@ function PricingModal({t,onClose,userPlan}) {
         ))}
         <p style={{fontSize:11,color:C.inkLight,textAlign:"center",marginTop:4}}>
           🔒 Stripe · Pago seguro · Cancela cuando quieras
+        </p>
+        <p style={{fontSize:11,color:C.inkLight,textAlign:"center",marginTop:6}}>
+          ¿Preguntas? <a href="mailto:gonrobtor@gmail.com" style={{color:C.accent}}>gonrobtor@gmail.com</a>
         </p>
       </div>
     </div>
@@ -594,12 +606,20 @@ export default function App() {
   const [showPricing,setShowPricing] = useState(false);
   const [limitHit,setLimitHit] = useState(false);
   const [speaking,setSpeaking] = useState(false);
+  const [userPlan,setUserPlan] = useState("free");
   const audioRef = useRef(null);
   const mounted = useRef(true);
   const fileInputRef = useRef(null);
 
   useEffect(()=>{ mounted.current=true; return()=>{ mounted.current=false; }; },[]);
-  useEffect(()=>{ if(user) setUsage(getUsage(user.id)); },[user]);
+  useEffect(()=>{
+    if(user){
+      setUsage(getUsage(user.id));
+      if(user.primaryEmailAddress?.emailAddress === "gonrobtor@gmail.com"){
+        setUserPlan("personal");
+      }
+    }
+  },[user]);
 
   async function addFiles(files) {
     for(const file of Array.from(files)){
@@ -614,7 +634,7 @@ export default function App() {
 
   async function analyze() {
     if(!isSignedIn||!user) return;
-    if(usage>=FREE_LIMIT){ setLimitHit(true); return; }
+    if(usage>=FREE_LIMIT && user?.primaryEmailAddress?.emailAddress !== "gonrobtor@gmail.com" && userPlan === "free"){ setLimitHit(true); return; }
     if(!text.trim()&&pages.length===0) return;
 
     setError(null); setResult(null); setAnalyzing(true);
@@ -688,12 +708,9 @@ export default function App() {
     <header style={{background:C.paper,borderBottom:`1px solid ${C.border}`,padding:"0 16px",
       position:"sticky",top:0,zIndex:100,boxShadow:`0 2px 12px ${C.shadow}`}}>
       <div style={{maxWidth:680,margin:"0 auto",height:56,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-        <div style={{display:"flex",alignItems:"center",gap:9}}>
-          <Logo size={30}/>
-          <div>
-            <div style={{fontSize:15,fontWeight:700,fontFamily:"'Lora',serif",color:C.ink,lineHeight:1}}>DocPlain</div>
-            <div style={{fontSize:10,color:C.inkLight}}>{t.tagline}</div>
-          </div>
+        <div style={{display:"flex",alignItems:"center",gap:6}}>
+          <Logo size={18}/>
+          <div style={{fontSize:17,fontWeight:400,fontFamily:"Georgia,'Times New Roman',serif",color:"#C4922A",letterSpacing:1,lineHeight:1}}>DocPlain</div>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:6}}>
           <div style={{display:"flex",gap:2}}>
@@ -735,17 +752,39 @@ export default function App() {
   if(!isSignedIn) return(
     <><style dangerouslySetInnerHTML={{__html:CSS}}/>
     <Header/>
-    <div style={{maxWidth:480,margin:"32px auto",padding:"0 20px"}}>
-      <div style={{textAlign:"center",marginBottom:24}}>
-        <div style={{fontSize:48,marginBottom:12}}>📋</div>
-        <h1 style={{fontSize:28,fontWeight:700,color:C.ink,marginBottom:8}}>{t.tagline}</h1>
-        <p style={{fontSize:14,color:C.inkLight}}>{t.sub}</p>
-        <div style={{display:"flex",gap:8,justifyContent:"center",marginTop:16,flexWrap:"wrap"}}>
-          {["📄 "+t.plans[0].features[0],"🎙 Audio","🌍 8 idiomas","⬇ Export PDF"].map((f,i)=>(
-            <span key={i} style={{padding:"4px 10px",background:C.accentDim,border:`1px solid ${C.border}`,
-              borderRadius:20,fontSize:11,color:C.accent,fontWeight:600}}>{f}</span>
+    <div style={{maxWidth:520,margin:"24px auto",padding:"0 20px"}}>
+      {/* Hero */}
+      <div style={{textAlign:"center",marginBottom:24,padding:"28px 24px",
+        background:"linear-gradient(135deg,#1a3a0a 0%,#2D5016 60%,#3d6b1f 100%)",
+        borderRadius:20,position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-20,right:-20,width:120,height:120,
+          borderRadius:"50%",background:"rgba(196,146,42,.15)"}}/>
+        <div style={{fontSize:44,marginBottom:10}}>📋</div>
+        <h1 style={{fontSize:"clamp(22px,5vw,30px)",fontWeight:800,color:"#fff",marginBottom:8,fontFamily:"'Lora',serif"}}>{t.tagline}</h1>
+        <p style={{fontSize:13,color:"rgba(255,255,255,.75)",marginBottom:16,lineHeight:1.5}}>{t.sub}</p>
+        <div style={{display:"flex",gap:6,justifyContent:"center",flexWrap:"wrap"}}>
+          {["📄 "+t.plans[0].features[0],"🎙 "+t.plans[1].features[2],"🌍 "+t.plans[0].features[2],"⬇ "+t.plans[1].features[3]].map((f,i)=>(
+            <span key={i} style={{padding:"4px 10px",background:"rgba(255,255,255,.15)",
+              border:"1px solid rgba(255,255,255,.25)",
+              borderRadius:20,fontSize:11,color:"#fff",fontWeight:600}}>{f}</span>
           ))}
         </div>
+      </div>
+      {/* Plans preview */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:20}}>
+        {t.plans.map((plan,i)=>(
+          <div key={plan.id} style={{padding:"12px 10px",textAlign:"center",
+            background:i===1?"linear-gradient(135deg,#2D5016,#4A7C2F)":C.paper,
+            border:`1.5px solid ${i===1?C.accent:C.border}`,borderRadius:12,
+            position:"relative"}}>
+            {i===1&&<div style={{position:"absolute",top:-8,left:"50%",transform:"translateX(-50%)",
+              background:C.gold,color:"#fff",fontSize:9,fontWeight:800,padding:"2px 8px",
+              borderRadius:10,whiteSpace:"nowrap"}}>POPULAR</div>}
+            <div style={{fontSize:16,fontWeight:800,color:i===1?"#fff":C.ink}}>{plan.price}</div>
+            <div style={{fontSize:9,color:i===1?"rgba(255,255,255,.7)":C.inkLight}}>{plan.period||"forever"}</div>
+            <div style={{fontSize:11,fontWeight:600,color:i===1?"#fff":C.ink,marginTop:4}}>{plan.name}</div>
+          </div>
+        ))}
       </div>
       <div style={{background:C.paper,borderRadius:16,padding:24,border:`1px solid ${C.border}`,
         boxShadow:`0 4px 20px ${C.shadow}`}}>
@@ -756,7 +795,7 @@ export default function App() {
                 border:"none",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600,
                 color:authMode===mode?C.accent:C.inkLight,
                 boxShadow:authMode===mode?`0 2px 8px ${C.shadow}`:"none"}}>
-              {mode==="signin"?"Entrar":"Registrarse"}
+              {mode==="signin"?{es:"Entrar",en:"Sign in",fr:"Connexion",pt:"Entrar",de:"Anmelden",it:"Accedi",ru:"Войти",zh:"登录"}[lang]||"Sign in":{es:"Registrarse",en:"Sign up",fr:"Inscription",pt:"Cadastrar",de:"Registrieren",it:"Registrati",ru:"Регистрация",zh:"注册"}[lang]||"Sign up"}
             </button>
           ))}
         </div>
@@ -971,17 +1010,34 @@ export default function App() {
             <div style={{fontSize:14,fontWeight:700,color:C.ink,marginBottom:10}}>{t.summaryTitle}</div>
             <p style={{fontSize:14,color:C.ink,lineHeight:1.7,fontFamily:"'Lora',serif",fontStyle:"italic"}}>{result.summary}</p>
             <div style={{display:"flex",gap:8,marginTop:12,flexWrap:"wrap"}}>
-              <button onClick={listen} disabled={speaking}
-                style={{padding:"7px 14px",background:speaking?C.accentDim:C.accentDim,
-                  border:`1px solid ${C.accent}`,borderRadius:8,cursor:"pointer",
-                  fontSize:12,fontWeight:600,color:C.accent}}>
-                {speaking?t.listeningBtn:t.listenBtn}
-              </button>
-              <button onClick={()=>exportPDF(result,lang)}
-                style={{padding:"7px 14px",background:C.goldDim,border:`1px solid ${C.gold}`,
-                  borderRadius:8,cursor:"pointer",fontSize:12,fontWeight:600,color:C.gold}}>
-                {t.exportBtn}
-              </button>
+                            {(userPlan !== "free" || user?.primaryEmailAddress?.emailAddress === "gonrobtor@gmail.com") ? (
+                <button onClick={listen} disabled={speaking}
+                  style={{padding:"7px 14px",background:C.accentDim,
+                    border:`1px solid ${C.accent}`,borderRadius:8,cursor:"pointer",
+                    fontSize:12,fontWeight:600,color:C.accent}}>
+                  {speaking?t.listeningBtn:t.listenBtn}
+                </button>
+              ) : (
+                <button onClick={()=>setShowPricing(true)}
+                  style={{padding:"7px 14px",background:C.accentDim,
+                    border:`1px solid ${C.accent}`,borderRadius:8,cursor:"pointer",
+                    fontSize:12,fontWeight:600,color:C.accent}}>
+                  🔒 {t.listenBtn}
+                </button>
+              )}
+              {(userPlan !== "free" || user?.primaryEmailAddress?.emailAddress === "gonrobtor@gmail.com") ? (
+                <button onClick={()=>exportPDF(result,lang)}
+                  style={{padding:"7px 14px",background:C.goldDim,border:`1px solid ${C.gold}`,
+                    borderRadius:8,cursor:"pointer",fontSize:12,fontWeight:600,color:C.gold}}>
+                  {t.exportBtn}
+                </button>
+              ) : (
+                <button onClick={()=>setShowPricing(true)}
+                  style={{padding:"7px 14px",background:C.goldDim,border:`1px solid ${C.gold}`,
+                    borderRadius:8,cursor:"pointer",fontSize:12,fontWeight:600,color:C.gold}}>
+                  🔒 {t.exportBtn}
+                </button>
+              )}
             </div>
           </div>
 
@@ -993,8 +1049,13 @@ export default function App() {
 
           <p style={{fontSize:11,color:C.inkLight,textAlign:"center",marginTop:14,lineHeight:1.5}}>{t.disclaimer}</p>
 
+          <div style={{textAlign:"center",marginTop:16,marginBottom:4}}>
+            <a href="mailto:gonrobtor@gmail.com" style={{fontSize:11,color:C.inkLight,textDecoration:"none"}}>
+              ✉️ gonrobtor@gmail.com
+            </a>
+          </div>
           <button onClick={reset}
-            style={{width:"100%",marginTop:14,padding:"12px",background:"transparent",
+            style={{width:"100%",marginTop:8,padding:"12px",background:"transparent",
               color:C.accent,border:`1.5px solid ${C.accent}`,borderRadius:12,
               fontSize:14,fontWeight:600,cursor:"pointer"}}>
             {t.newDoc}
