@@ -22,12 +22,7 @@ export default async function handler(req, res) {
       }),
     });
 
-    if (!r.ok) {
-      const err = await r.text();
-      console.error("ElevenLabs error:", r.status, err);
-      return res.status(r.status).json({ error: err });
-    }
-
+    if (!r.ok) return res.status(r.status).json({ error: await r.text() });
     const buf = await r.arrayBuffer();
     res.setHeader("Content-Type", "audio/mpeg");
     res.setHeader("Cache-Control", "no-store");
