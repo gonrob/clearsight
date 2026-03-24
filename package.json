@@ -1,5 +1,5 @@
 {
-  "name": "clearsight",
+  "name": "docplain",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.0.0",
+    "posthog-js": "^1.144.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
