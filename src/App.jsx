@@ -34,7 +34,7 @@ const CSS = `
 const T = {
   es:{ flag:"🇪🇸", lp:"español",
     tagline:"Sube contratos, multas, cartas documento y cualquier escrito oficial.",
-    sub:"Contratos de alquiler, trabajo, préstamos — te decimos los riesgos, lo que puedes negociar y qué preguntar.",
+    sub:"Contratos, multas, cartas documento, escritos oficiales — te decimos los riesgos, lo que puedes negociar y qué preguntar.",
     docTypes:["Alquiler","Trabajo","Préstamo","Multa","Cláusula","Otro"],
     docTypeLabel:"¿Qué tipo de documento?",
     uploadTitle:"Sube tu documento", uploadSub:"PDF o imágenes (varias páginas)",
@@ -709,11 +709,7 @@ export default function App() {
         <div style={{fontSize:44,marginBottom:10}}>📋</div>
         <h1 style={{fontSize:"clamp(18px,4vw,26px)",fontWeight:800,color:"#fff",marginBottom:8}}>{t.tagline}</h1>
         <p style={{fontSize:13,color:"rgba(255,255,255,.75)",marginBottom:16,lineHeight:1.5}}>{t.sub}</p>
-        <div style={{display:"flex",gap:6,justifyContent:"center",flexWrap:"wrap"}}>
-          {["📄 "+t.plans[0].features[0],"🌍 "+t.plans[0].features[1]].map((f,i)=>(
-            <span key={i} style={{padding:"4px 10px",background:"rgba(255,255,255,.15)",border:"1px solid rgba(255,255,255,.25)",borderRadius:20,fontSize:11,color:"#fff",fontWeight:600}}>{f}</span>
-          ))}
-        </div>
+
       </div>
       {/* Plans preview */}
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:20}}>
@@ -726,6 +722,7 @@ export default function App() {
             <div style={{fontSize:16,fontWeight:800,color:i===1?"#fff":C.ink}}>{plan.price}</div>
             <div style={{fontSize:9,color:i===1?"rgba(255,255,255,.7)":C.inkLight}}>{plan.period||"forever"}</div>
             <div style={{fontSize:11,fontWeight:600,color:i===1?"#fff":C.ink,marginTop:4}}>{plan.name}</div>
+            {plan.latam&&<div style={{fontSize:9,color:i===1?"rgba(255,196,42,.9)":"#C4922A",marginTop:3,lineHeight:1.2}}>🌎 {plan.latam}</div>}
           </div>
         ))}
       </div>
