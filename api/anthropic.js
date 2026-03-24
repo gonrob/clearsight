@@ -14,7 +14,8 @@ export default async function handler(req, res) {
 
     const modelMap = {
       "claude-3-5-sonnet-20241022": "claude-sonnet-4-5",
-      "claude-3-haiku-20240307": "claude-haiku-4-5",
+      "claude-3-haiku-20240307":    "claude-haiku-4-5",
+      "claude-haiku-4-5-20251001":  "claude-haiku-4-5",
     };
     const VALID = ["claude-sonnet-4-5", "claude-haiku-4-5", "claude-opus-4-5"];
     const model = VALID.includes(body.model) ? body.model : (modelMap[body.model] || "claude-sonnet-4-5");
