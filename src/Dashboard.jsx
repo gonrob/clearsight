@@ -1,4 +1,12 @@
 import { useState, useEffect } from "react";
+
+// Switch manifest for dashboard PWA
+if (typeof document !== 'undefined') {
+  const link = document.querySelector('link[rel="manifest"]');
+  if (link) link.href = '/manifest-dashboard.json';
+  const theme = document.querySelector('meta[name="theme-color"]');
+  if (theme) theme.content = '#27ae60';
+}
 import { useUser } from "@clerk/clerk-react";
 
 const ADMIN_EMAIL = "gonrobtor@gmail.com";
