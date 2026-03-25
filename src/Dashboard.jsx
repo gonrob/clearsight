@@ -6,6 +6,9 @@ if (typeof document !== 'undefined') {
   if (link) link.href = '/manifest-dashboard.json';
   const theme = document.querySelector('meta[name="theme-color"]');
   if (theme) theme.content = '#27ae60';
+  // Save key to localStorage so PWA remembers it
+  const urlKey = new URLSearchParams(window.location.search).get('key');
+  if (urlKey) localStorage.setItem('dp_dash_key', urlKey);
 }
 import { useUser } from "@clerk/clerk-react";
 
@@ -35,7 +38,7 @@ export default function Dashboard() {
 
   async function fetchStats() {
     try {
-      const key = new URLSearchParams(window.location.search).get("key") || "";
+      const key = new URLSearchParams(window.location.search).get("key") || localStorage.getItem("dp_dash_key") || "";
       const r = await fetch("/api/dashboard?key=" + key);
       if (!r.ok) throw new Error("HTTP " + r.status);
       setStats(await r.json());
